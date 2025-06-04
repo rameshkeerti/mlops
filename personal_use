@@ -67,20 +67,25 @@ print(f"Total Amount (Principal + Interest): ₹{total_amount}")
 compound_interest for fixed amount
 =============================
 
-# Compound Interest Calculator
+# Compound Interest with Year-wise Growth Table
 
 # Input values
-principal = 100000      # Principal amount in ₹
+principal = 100000      # Initial principal in ₹
 rate = 10               # Annual interest rate in %
-time = 5                # Time in years
+time = 5                # Total years
 
-# Calculate compound interest
-amount = principal * (1 + rate / 100) ** time
-compound_interest = amount - principal
+print("Year-wise Compound Interest Growth:\n")
+print(f"{'Year':<5} {'Amount (₹)':<20} {'Interest Earned (₹)':<25}")
 
-# Display results
-print(f"Principal: ₹{principal}")
-print(f"Rate: {rate}%")
-print(f"Time: {time} years")
-print(f"Compound Interest: ₹{round(compound_interest, 2)}")
-print(f"Total Amount (Principal + Interest): ₹{round(amount, 2)}")
+for year in range(1, time + 1):
+    amount = principal * (1 + rate / 100) ** year
+    interest = amount - principal
+    print(f"{year:<5} {round(amount, 2):<20} {round(interest, 2):<25}")
+
+# Final total summary
+final_amount = principal * (1 + rate / 100) ** time
+total_interest = final_amount - principal
+
+print(f"\nFinal Amount after {time} years: ₹{round(final_amount, 2)}")
+print(f"Total Interest Earned: ₹{round(total_interest, 2)}")
+
